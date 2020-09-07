@@ -1,24 +1,60 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+| name     | string | null: false |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :purchanse
 
-* System dependencies
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column   | Type       | Options                       |
+| ------   | ------     | -----------                   |
+| image    | string     | null: false                   |
+| item-name| string     | null: false                   |
+| acount   | text       | null: false                   |
+|  user    | references | null: false, foreign_key: true|
 
-* Database initialization
+### Association
+- belong_to: user
+- has_many : purchanse
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## purchanse テーブル
 
-* Deployment instructions
+| Column  | Type       | Options                        |
+| ------  | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| items   | references | null: false, foreign_key: true |
+| cardnews| string     | null: false                    |
+| validity| string     | null: false                    |
+| security| string     | null: false                    |
 
-* ...
+
+### Association
+- belongs_to : item
+- belongs_to : user
+- has_one    : delivery
+
+## delivery テーブル
+
+| Column       | Type       | Options                        |
+| ---------    | ---------- | ------------------------------ |
+| purchanse    | references | null: false, foreign_key: true |
+| zip          | string     | null: false                    |
+| purefecture  | string     | null: false                    |
+| city         | string     | null: false                    |
+| reference    | string     | null: false                    |
+| building     | string     | null: false                    |
+| number       | string     | null: false                    |
+
+
+### Association
+- belongs_to : purchanse

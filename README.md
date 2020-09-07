@@ -1,12 +1,16 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| name     | string | null: false |
+| Column              | Type   | Options     |
+| --------------------| ------ | ----------- |
+| nickname            | string | null: false |
+| email               | string | null: false |
+| password            | string | null: false |
+| last_name           | string | null: false |
+| first_name          | string | null: false |
+| last_name_kana      | string | null: false |
+| first_name_kana     | string | null: false |
+| birthday            | date   | null: false |
 
 ### Association
 - has_many :items
@@ -15,13 +19,18 @@
 
 ## items テーブル
 
-| Column   | Type       | Options                       |
-| ------   | ------     | -----------                   |
-| image    | string     | null: false                   |
-| item-name| string     | null: false                   |
-| acount   | text       | null: false                   |
-|  user    | references | null: false, foreign_key: true|
-
+| Column            | Type       | Options                       |
+| ------            | ------     | -----------                   |
+| name              | string     | null: false                   |
+| acount            | text       | null: false                   |
+| state             | integer    | null: false                   |
+| postage           | integer    | null: false                   |
+| region            | integer    | null: false                   |
+| shipping_date     | date       | null: false                   |
+| price             | integer    | null: false                   |
+| category          | integer    | null: false                   |
+| user_id           | integer    | null: false, foreign_key: true|
+        
 ### Association
 - belong_to: user
 - has_many : purchanse
@@ -31,11 +40,8 @@
 
 | Column  | Type       | Options                        |
 | ------  | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| items   | references | null: false, foreign_key: true |
-| cardnews| string     | null: false                    |
-| validity| string     | null: false                    |
-| security| string     | null: false                    |
+| user_id | integer    | null: false, foreign_key: true |
+| item_id | integer    | null: false, foreign_key: true |
 
 
 ### Association
@@ -52,8 +58,8 @@
 | purefecture  | string     | null: false                    |
 | city         | string     | null: false                    |
 | reference    | string     | null: false                    |
-| building     | string     | null: false                    |
-| number       | string     | null: false                    |
+| building     | string     |                                |
+| phone_number | string     | null: false                    |
 
 
 ### Association

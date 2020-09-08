@@ -23,12 +23,12 @@
 | ------            | ------     | -----------                   |
 | name              | string     | null: false                   | <!--商品名>
 | acount            | text       | null: false                   | <!--商品説明>
-| state             | integer    | null: false                   | <!--商品状態>
-| postage           | integer    | null: false                   | <!--配送料負担>
-| region            | integer    | null: false                   | <!--発送元地域>
-| shipping_date     | integer    | null: false                   | <!--発送までの日数>
-| price             | integer    | null: false                   | <!--価格>
-| category          | integer    | null: false                   | <!--カテゴリー>
+| state_id          | integer    | null: false                   | <!--商品状態>
+| postage_id        | integer    | null: false                   | <!--配送料負担>
+| region_id         | integer    | null: false                   | <!--発送元地域>
+| shipping_date_id  | integer    | null: false                   | <!--発送までの日数>
+| price_id          | integer    | null: false                   | <!--価格>
+| category_id       | integer    | null: false                   | <!--カテゴリー>
 | user_id           | integer    | null: false, foreign_key: true|
         
 ### Association
@@ -51,15 +51,15 @@
 
 ## delivery テーブル
 
-| Column       | Type       | Options                        |
-| ---------    | ---------- | ------------------------------ |
-| purchanse_id | integer    | null: false, foreign_key: true |
-| zip          | string     | null: false                    |
-| purefecture  | integer    | null: false                    |
-| city         | string     | null: false                    |
-| reference    | string     | null: false                    |
-| building     | string     |                                |
-| phone_number | string     | null: false                    |
+| Column        | Type       | Options                        |
+| ---------     | ---------- | ------------------------------ |
+| purchanse_id  | integer    | null: false, foreign_key: true |
+| zip           | string     | null: false                    |
+|purefecture＿id| integer    | null: false                    |
+| city          | string     | null: false                    |
+| reference     | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
 
 
 ### Association

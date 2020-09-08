@@ -27,7 +27,7 @@
 | postage_id        | integer    | null: false                   | <!--配送料負担>
 | region_id         | integer    | null: false                   | <!--発送元地域>
 | shipping_date_id  | integer    | null: false                   | <!--発送までの日数>
-| price_id          | integer    | null: false                   | <!--価格>
+| price             | integer    | null: false                   | <!--価格>
 | category_id       | integer    | null: false                   | <!--カテゴリー>
 | user_id           | integer    | null: false, foreign_key: true|
         

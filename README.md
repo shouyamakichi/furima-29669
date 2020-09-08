@@ -10,7 +10,7 @@
 | first_name          | string | null: false |
 | last_name_kana      | string | null: false |
 | first_name_kana     | string | null: false |
-| birthday            | date   | null: false |
+| birthday            | integer| null: false |
 
 ### Association
 - has_many :items
@@ -32,8 +32,8 @@
 | user_id           | integer    | null: false, foreign_key: true|
         
 ### Association
-- belong_to: user
-- has_many : purchanse
+- belongs_to: user
+- has_one   : purchanse
 
 
 ## purchanse テーブル
@@ -53,7 +53,7 @@
 
 | Column       | Type       | Options                        |
 | ---------    | ---------- | ------------------------------ |
-| purchanse    | references | null: false, foreign_key: true |
+| purchanse_id | integer    | null: false, foreign_key: true |
 | zip          | string     | null: false                    |
 | purefecture  | string     | null: false                    |
 | city         | string     | null: false                    |

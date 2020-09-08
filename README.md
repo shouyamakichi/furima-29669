@@ -14,21 +14,21 @@
 
 ### Association
 - has_many :items
-- has_many :purchanse
+- has_many :purchanses
 
 
 ## items テーブル
 
 | Column            | Type       | Options                       |
 | ------            | ------     | -----------                   |
-| name              | string     | null: false                   |
-| acount            | text       | null: false                   |
-| state             | integer    | null: false                   |
-| postage           | integer    | null: false                   |
-| region            | integer    | null: false                   |
-| shipping_date     | integer    | null: false                   |
-| price             | integer    | null: false                   |
-| category          | integer    | null: false                   |
+| name              | string     | null: false                   | <!--商品名>
+| acount            | text       | null: false                   | <!--商品説明>
+| state             | integer    | null: false                   | <!--商品状態>
+| postage           | integer    | null: false                   | <!--配送料負担>
+| region            | integer    | null: false                   | <!--発送元地域>
+| shipping_date     | integer    | null: false                   | <!--発送までの日数>
+| price             | integer    | null: false                   | <!--価格>
+| category          | integer    | null: false                   | <!--カテゴリー>
 | user_id           | integer    | null: false, foreign_key: true|
         
 ### Association

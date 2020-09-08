@@ -10,7 +10,7 @@
 | first_name          | string | null: false |
 | last_name_kana      | string | null: false |
 | first_name_kana     | string | null: false |
-| birthday            | integer| null: false |
+| birthday            | date   | null: false |
 
 ### Association
 - has_many :items
@@ -26,7 +26,7 @@
 | state             | integer    | null: false                   |
 | postage           | integer    | null: false                   |
 | region            | integer    | null: false                   |
-| shipping_date     | date       | null: false                   |
+| shipping_date     | integer    | null: false                   |
 | price             | integer    | null: false                   |
 | category          | integer    | null: false                   |
 | user_id           | integer    | null: false, foreign_key: true|
@@ -55,7 +55,7 @@
 | ---------    | ---------- | ------------------------------ |
 | purchanse_id | integer    | null: false, foreign_key: true |
 | zip          | string     | null: false                    |
-| purefecture  | string     | null: false                    |
+| purefecture  | integer    | null: false                    |
 | city         | string     | null: false                    |
 | reference    | string     | null: false                    |
 | building     | string     |                                |

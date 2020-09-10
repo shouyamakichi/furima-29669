@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  #  before_action : move_to_index, except: :index
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @items = Item.all
@@ -9,19 +9,19 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def create
-    @items = Item.create(items_params)
-  end
-
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-  end
-
-  # private
-  # def move_to_index
-  # unless user_sign_in?
-  # redirect_to action: :index
+  # def create
+  #   @items = Item.create(items_params)
   # end
+
+  # def destroy
+  #   item = Item.find(params[:id])
+  #   item.destroy
   # end
+
+  private
+
+    def items_params
+      params.require(:item).permit(:content, :image).merge(user_id: current_user.id)
+    end
+
 end

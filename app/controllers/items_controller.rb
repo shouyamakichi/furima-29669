@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :new]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @items = Item.all
@@ -9,9 +9,9 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  # def create
-  #   @items = Item.create(items_params)
-  # end
+  def create
+    
+  end
 
   # def destroy
   #   item = Item.find(params[:id])

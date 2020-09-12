@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  #  before_action : move_to_index, except: :index
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @items = Item.all
@@ -10,18 +10,19 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @items = Item.create(items_params)
+    @item = Item.new(items_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-  end
+  private
 
-  # private
-  # def move_to_index
-  # unless user_sign_in?
-  # redirect_to action: :index
-  # end
-  # end
+    def items_params
+      params.require(:item).permit(:content, :image, :name, :acount, :category_id, :state_id, :postage_id, :region_id, :shipping_date_id, :price).merge(user_id: current_user.id)
+      # // permitの設定を変える必要があります。受け取りたいキーを全て設定しましょう
+    end
+
 end

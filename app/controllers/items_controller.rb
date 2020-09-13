@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -19,15 +20,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(items_params)
       redirect_to item_path
     else
@@ -40,6 +38,10 @@ class ItemsController < ApplicationController
     def items_params
       params.require(:item).permit(:content, :image, :name, :acount, :category_id, :state_id, :postage_id, :region_id, :shipping_date_id, :price,).merge(user_id: current_user.id)
       # // permitの設定を変える必要があります。受け取りたいキーを全て設定しましょう
+    end
+
+    def set_item
+      @item = Item.find(params[:id])
     end
 
 end

@@ -23,12 +23,22 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(items_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
   end
 
   private
 
     def items_params
-      params.require(:item).permit(:content, :image, :name, :acount, :category_id, :state_id, :postage_id, :region_id, :shipping_date_id, :price,:image).merge(user_id: current_user.id)
+      params.require(:item).permit(:content, :image, :name, :acount, :category_id, :state_id, :postage_id, :region_id, :shipping_date_id, :price,).merge(user_id: current_user.id)
       # // permitの設定を変える必要があります。受け取りたいキーを全て設定しましょう
     end
 

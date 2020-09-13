@@ -1,9 +1,10 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one :purchanse
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :genle
+  belongs_to_active_hash :category
   belongs_to_active_hash :state
   belongs_to_active_hash :postage
   belongs_to_active_hash :region

@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_025421) do
   end
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "zip", null: false
+    t.integer "zip", null: false
     t.integer "purefecture_id", null: false
     t.string "city", null: false
     t.string "reference", null: false

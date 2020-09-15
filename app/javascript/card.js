@@ -8,21 +8,23 @@ const pay = () => {
     const formData = new FormData(formResult);
 
     const card = {
-      number: formData.get("purchanse[number]"),
+      number: formData.get("purchanse_delivery[number]"),
       // number: 42424242424
-      cvc: formData.get("purchanse[cvc]"),
+      cvc: formData.get("purchanse_delivery[cvc]"),
       // cvc: 123
-      exp_month: formData.get("purchanse[exp_month]"),
-      exp_year: `20${formData.get("purchanse[exp_year]")}`
+      exp_month: formData.get("purchanse_delivery[exp_month]"),
+      exp_year: `20${formData.get("purchanse_delivery[exp_year]")}`
     };
-    
+    console.log(card)
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");//form要素を取得する
-        const tokenObj = `<input value=${token} type="hidden" name='token'>`;
+        const tokenObj = `<input value=${token} type="hidden" name='purchanse_delivery[token]'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
+        console.log(token)
       }
+
       document.getElementById("card-number").removeAttribute("name");
       document.getElementById("card-cvc").removeAttribute("name");
       document.getElementById("card-exp-month").removeAttribute("name");

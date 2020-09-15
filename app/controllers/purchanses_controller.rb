@@ -3,30 +3,37 @@ class PurchansesController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @purchanse = Purchanse.new
+    @purchanse = PurchanseDelivery.new
     @item = Item.find(params[:item_id])
   end
+
+  # def new
+  #   @purchanse = UserPurchanse.new
+  # end
   
   def create
-    @purchanse = Purchanse.new(purchanse_params)
+    @item = Item.find(params[:item_id])
+    @purchanse = PurchanseDelivery.new(purchanse_params)
+    @purchanse.save
     if @purchanse.valid?
       pay_item
-      @purchanse.save
-      return redirect_to root_path
+      redirect_to root_path
+    else
+      render 'index'
     end
-    render :purchanse
   end
 
 
   
   def purchanse_params
-    params.permit(:token)
+    params.require(:purchanse_delivery).permit(:zip, :purefecture_id, :city, :reference, :building, :phone_number, :token).merge(user_id: current_user.id, item_id: @item.id)
   end
   
   def pay_item
+    @item = Item.find(params[:item_id])
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    Payjp::Carge.create(
-      amount: item_params[:price],
+    Payjp::Charge.create(
+      amount: @item.price,
       card: purchanse_params[:token],
       currency:'jpy'
     )
@@ -34,7 +41,7 @@ class PurchansesController < ApplicationController
   
   private
 
-  def move_to_index?
+  def move_to_index
     unless user_signed_in?
       redirect_to action: :index
     end

@@ -1,7 +1,7 @@
 class CreateDeliveries < ActiveRecord::Migration[6.0]
   def change
     create_table :deliveries do |t|
-      t.string :zip,                     null: false
+      t.integer :zip,                     null: false
       t.integer :purefecture_id,         null: false
       t.string :city,                    null: false
       t.string :reference,               null: false

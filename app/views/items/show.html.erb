@@ -33,7 +33,7 @@
     <% elsif  @item.purchanse == nil %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to '購入画面に進む', item_purchanses_path(@item) ,class:"item-red-btn"%>
-    <% else %>
+    <% elsif current_user.id && current_user.id != @item.user_id %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
 

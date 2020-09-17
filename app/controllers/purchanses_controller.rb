@@ -3,19 +3,13 @@ class PurchansesController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :move_to_purchanse, only: [:index]
   before_action :move_to_buy
+  before_action :set_item, only: [:index, :create]
 
   def index
-
     @purchanse = PurchanseDelivery.new
-    @item = Item.find(params[:item_id])
   end
 
-  # def new
-  #   @purchanse = UserPurchanse.new
-  # end
-  
   def create
-    @item = Item.find(params[:item_id])
     @purchanse = PurchanseDelivery.new(purchanse_params)
     if @purchanse.valid?
       @purchanse.save
@@ -62,6 +56,10 @@ class PurchansesController < ApplicationController
     if @item.purchanse != nil
       redirect_to root_path
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
 end

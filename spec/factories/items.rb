@@ -7,12 +7,12 @@ FactoryBot.define do
     
     name                    { '写真' } 
     acount                  {'写真が映る'}
-    state_id                {1}
-    postage_id              {1}
-    region_id               {1}
-    shipping_date_id        {1}
+    state_id                {2}
+    postage_id              {2}
+    region_id               {2}
+    shipping_date_id        {2}
     price                   {400}
-    category_id             {1}
+    category_id             {2}
     association :user
   end
 end

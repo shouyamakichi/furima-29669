@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
   private
 
     def items_params
-      params.require(:item).permit(:content, :image, :name, :acount, :category_id, :state_id, :postage_id, :region_id, :shipping_date_id, :price,).merge(user_id: current_user.id)
+      params.require(:item).permit(:content, :image, :name, :acount, :category_id, :region_id, :state_id, :postage_id,:shipping_date_id, :price,).merge(user_id: current_user.id,)
       # // permitの設定を変える必要があります。受け取りたいキーを全て設定しましょう
     end
 

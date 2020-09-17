@@ -9,7 +9,7 @@ class PurchanseDelivery
     with_options presence:true do
       validates :zip, format: { with: /\A\d{3}[-]\d{4}\z/}
       validates :purefecture_id, numericality: { other_than: 1 } 
-      validates :city
+      validates :city, format: { with: /\A[一-龥ぁ-ん]/}
       validates :reference
       validates :phone_number, format: { with: /\A\d{11}\z/}
       validates :token

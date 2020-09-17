@@ -60,5 +60,12 @@ RSpec.describe PurchanseDelivery, type: :model do
       @purchanse_delivery.valid?
       expect(@purchanse_delivery.errors.full_messages).to include("Phone number is invalid")
     end
+
+    it 'phone_numberが11桁以内でないと登録できない' do
+      @purchanse_delivery.phone_number = "0901234224566"
+      @purchanse_delivery.valid?
+      expect(@purchanse_delivery.errors.full_messages).to include("Phone number is invalid")
+    end
+
   end
 end

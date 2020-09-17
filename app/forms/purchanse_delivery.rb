@@ -14,7 +14,6 @@ class PurchanseDelivery
       validates :phone_number, format: { with: /\A\d{11}\z/}
       validates :token
     end
-    # validates :building
 
   def save
     # purchanseの情報を保存

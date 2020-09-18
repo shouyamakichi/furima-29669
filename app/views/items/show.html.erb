@@ -31,11 +31,8 @@
     <p class='or-text'>or</p>
     <%= link_to '削除', item_path, method: :delete, class:'item-destroy' %>
     <% elsif  @item.purchanse == nil %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to '購入画面に進む', item_purchanses_path(@item) ,class:"item-red-btn"%>
-    <% elsif current_user.id && current_user.id != @item.user_id %>
-    <%= link_to '購入画面に進む', item_purchanses_path(@item) ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
+    <% else %>
     <% end %>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
